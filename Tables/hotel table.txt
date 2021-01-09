@@ -1,0 +1,69 @@
+CREATE TABLE `ho`.`hotel` (
+  `id_hotel` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `stars` INT NULL,
+  `id_photo` INT NOT NULL,
+  `id_category` INT NOT NULL,
+  `id_district` INT NOT NULL,
+  `id_coordinates` INT NOT NULL,
+  `id_admin` INT NOT NULL,
+  `creation_date` DATE NULL,
+  `creation_user` VARCHAR(45) NULL,
+  `date_last_modification` DATE NULL,
+  `user_last_modification` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_hotel`),
+  INDEX `id_photo_hotel_idx` (`id_photo` ASC) VISIBLE,
+  INDEX `id_category_hotel_idx` (`id_category` ASC) VISIBLE,
+  INDEX `id_district_hotel_idx` (`id_district` ASC) VISIBLE,
+  INDEX `id_coodinates_hotel_idx` (`id_coordinates` ASC) VISIBLE,
+  INDEX `id_admin_hotel_idx` (`id_admin` ASC) VISIBLE,
+  CONSTRAINT `id_photo_hotel`
+    FOREIGN KEY (`id_photo`)
+    REFERENCES `ho`.`photo` (`id_photo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_category_hotel`
+    FOREIGN KEY (`id_category`)
+    REFERENCES `ho`.`category` (`id_category`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_district_hotel`
+    FOREIGN KEY (`id_district`)
+    REFERENCES `ho`.`district` (`id_district`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_coodinates_hotel`
+    FOREIGN KEY (`id_coordinates`)
+    REFERENCES `ho`.`coordinates` (`id_coordinates`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_admin_hotel`
+    FOREIGN KEY (`id_admin`)
+    REFERENCES `ho`.`person` (`id_person`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+COMMENT = 'Repository to store hotels';
+DROP TRIGGER IF EXISTS `ho`.`hotel_BEFORE_INSERT`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `ho`.`hotel_BEFORE_INSERT` BEFORE INSERT ON `hotel` FOR EACH ROW
+BEGIN
+	IF NEW.creation_date IS NULL OR NEW.creation_user IS NULL THEN 
+		SET NEW.creation_date = CURDATE();
+        SET NEW.creation_user = SYSTEM_USER();
+	END IF;
+END$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `ho`.`hotel_BEFORE_UPDATE`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `ho`.`hotel_BEFORE_UPDATE` BEFORE UPDATE ON `hotel` FOR EACH ROW
+BEGIN
+	IF NEW.date_last_modification IS NULL OR NEW.user_last_modification IS NULL THEN
+		SET NEW.date_last_modification = CURDATE();
+        SET NEW.user_last_modification = SYSTEM_USER();
+	END IF;
+END$$
+DELIMITER ;
