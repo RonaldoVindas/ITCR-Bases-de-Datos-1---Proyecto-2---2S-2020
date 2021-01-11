@@ -3,6 +3,7 @@ CREATE TABLE `ho`.`room` (
   `price` INT NULL,
   `bed_quantity` INT NULL,
   `id_room_type` INT NOT NULL,
+  `id_hotel` INT NOT NULL,	
   `id_status_room` INT NOT NULL,
   `creation_date` DATE NULL,
   `creation_user` VARCHAR(45) NULL,
@@ -11,6 +12,7 @@ CREATE TABLE `ho`.`room` (
   PRIMARY KEY (`id_room`),
   INDEX `id_room_type_idx` (`id_room_type` ASC) VISIBLE,
   INDEX `id_status_idx` (`id_status_room` ASC) VISIBLE,
+  INDEX `id_hotel_idx` (`id_hotel` ASC) VISIBLE,
   CONSTRAINT `id_room_type`
     FOREIGN KEY (`id_room_type`)
     REFERENCES `ho`.`room_type` (`id_room_type`)
@@ -19,6 +21,11 @@ CREATE TABLE `ho`.`room` (
   CONSTRAINT `id_status_room`
     FOREIGN KEY (`id_status_room`)
     REFERENCES `ho`.`status` (`id_status`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_hotel`
+    FOREIGN KEY (`id_hotel`)
+    REFERENCES `ho`.`hotel` (`id_hotel`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
