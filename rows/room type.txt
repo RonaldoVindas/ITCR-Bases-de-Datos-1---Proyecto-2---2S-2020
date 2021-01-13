@@ -1,0 +1,9 @@
+insert into room_type(name) Values("Individual");
+insert into room_type(name) Values("Double");
+insert into room_type(name) Values("Triple");
+insert into room_type(name) Values("Quad");
+insert into room_type(name) Values("Queen");
+insert into room_type(name) Values("King");
+insert into room_type(name) Values("Suite");
+insert into room_type(name) Values("Apartment");
+insert into room_type(name) Values("Ejecutive Floor");

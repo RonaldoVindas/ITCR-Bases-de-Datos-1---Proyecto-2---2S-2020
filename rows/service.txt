@@ -1,0 +1,13 @@
+insert into service(name) values("Wifi");
+insert into service(name) values("Room service");
+insert into service(name) values("Pets Allowed");
+insert into service(name) values("Pool");
+insert into service(name) values("Spa");
+insert into service(name) values("Gym");
+insert into service(name) values("Breakfast");
+insert into service(name) values("Restaurant");
+insert into service(name) values("Business Center");
+insert into service(name) values("Bar");
+insert into service(name) values("Sports Facilities");
+insert into service(name) values("Parking");
+insert into service(name) values("Tv");

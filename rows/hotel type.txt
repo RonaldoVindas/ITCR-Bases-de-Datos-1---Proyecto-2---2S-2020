@@ -1,0 +1,8 @@
+insert into hotel_type(name) values("Hostel");
+insert into hotel_type(name) values("Motel");
+insert into hotel_type(name) values("Resort");
+insert into hotel_type(name) values("B&B");
+insert into hotel_type(name) values("Business Hotel");
+insert into hotel_type(name) values("Boutique Hotel");
+insert into hotel_type(name) values("Apartment");
+insert into hotel_type(name) values("Capsule Hotel");
