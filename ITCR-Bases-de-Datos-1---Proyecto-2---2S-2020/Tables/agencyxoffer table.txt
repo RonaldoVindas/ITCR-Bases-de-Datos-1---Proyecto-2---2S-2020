@@ -1,0 +1,43 @@
+CREATE TABLE `ho`.`agencyxoffer` (
+  `id_agency` INT NOT NULL,
+  `id_offer` INT NOT NULL,
+  `creation_date` DATE NULL,
+  `creation_user` VARCHAR(45) NULL,
+  `date_last_modification` DATE NULL,
+  `user_last_modification` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_agency`, `id_offer`),
+  INDEX `id_offer_idx` (`id_offer` ASC) VISIBLE,
+  CONSTRAINT `id_agency`
+    FOREIGN KEY (`id_agency`)
+    REFERENCES `ho`.`agency` (`id_agency`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_offer`
+    FOREIGN KEY (`id_offer`)
+    REFERENCES `ho`.`offer` (`id_offer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+DROP TRIGGER IF EXISTS `ho`.`agencyxoffer_BEFORE_INSERT`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `ho`.`agencyxoffer_BEFORE_INSERT` BEFORE INSERT ON `agencyxoffer` FOR EACH ROW
+BEGIN
+	IF NEW.creation_date IS NULL OR NEW.creation_user IS NULL THEN 
+		SET NEW.creation_date = CURDATE();
+        SET NEW.creation_user = SYSTEM_USER();
+	END IF;
+END$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `ho`.`agencyxoffer_BEFORE_UPDATE`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `ho`.`agencyxoffer_BEFORE_UPDATE` BEFORE UPDATE ON `agencyxoffer` FOR EACH ROW
+BEGIN
+	IF NEW.date_last_modification IS NULL OR NEW.user_last_modification IS NULL THEN
+		SET NEW.date_last_modification = CURDATE();
+        SET NEW.user_last_modification = SYSTEM_USER();
+	END IF;
+END$$
+DELIMITER ;

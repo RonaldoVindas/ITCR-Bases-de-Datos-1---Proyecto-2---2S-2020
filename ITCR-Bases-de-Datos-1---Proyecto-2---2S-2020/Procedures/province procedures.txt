@@ -1,0 +1,83 @@
+USE `ho`;
+DROP procedure IF EXISTS `insert_province`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `insert_province` (IN pname VARCHAR(45),IN pid_country INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	INSERT INTO province(name,id_country)
+    VALUES(pname,pid_country);
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_province_name`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_province_name` (IN pid_province INT,IN pname VARCHAR(45))
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE province
+    SET name = pname
+    WHERE id_province = pid_province;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////////////////
+
+
+USE `ho`;
+DROP procedure IF EXISTS `update_province_id_country`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_province_id_country` (IN pid_province INT,IN pid_country INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE province
+    SET id_country = pid_country
+    WHERE id_province = pid_province;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `remove_province`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `remove_province` (IN pid INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	DELETE FROM province
+    WHERE id_province = pid;
+END$$
+
+DELIMITER ;

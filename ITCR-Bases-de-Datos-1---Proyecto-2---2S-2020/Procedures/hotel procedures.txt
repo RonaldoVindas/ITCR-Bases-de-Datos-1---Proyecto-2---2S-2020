@@ -1,0 +1,195 @@
+USE `ho`;
+DROP procedure IF EXISTS `insert_hotel`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `insert_hotel` (IN pname VARCHAR(45),IN pstars INT,IN pid_photo INT,IN pid_category INT,
+IN pid_district INT,IN pid_coordinates INT,IN pid_admin INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	INSERT INTO hotel(name,stars,id_photo,id_category,id_district,id_coordinates,id_admin)
+    VALUES(pname,pstars,pid_photo,pid_category,pid_district,pid_coordinates,pid_admin);
+END$$
+
+DELIMITER ;
+
+//////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_hotel_name`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_hotel_name` (IN pid INT,IN pname VARCHAR(45))
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE hotel
+    SET name = pname
+    WHERE id_hotel = pid;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_hotel_stars`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_hotel_stars` (IN pid INT,IN pstars INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE hotel
+    SET stars = pstars
+    WHERE id_hotel = pid;
+END$$
+
+DELIMITER ;
+
+//////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_hotel_id_photo`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_hotel_id_photo` (IN pid_hotel INT,IN pid_photo INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE hotel
+    SET id_photo = pid_photo
+    WHERE id_hotel = pid_hotel;
+END$$
+
+DELIMITER ;
+
+/////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_hotel_id_category`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_hotel_id_category` (IN pid_hotel INT,IN pid_category INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE hotel
+    SET id_category = pid_category
+    WHERE id_hotel = pid_hotel;
+END$$
+
+DELIMITER ;
+
+/////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_hotel_id_district`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_hotel_id_district` (IN pid_hotel INT,IN pid_district INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE hotel
+    SET id_district = pid_district
+    WHERE id_hotel = pid_hotel;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_hotel_id_coordinates`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_hotel_id_coordinates` (IN pid_hotel INT,IN pid_coordinates INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE hotel
+    SET id_coordinates = pid_coordinates
+    WHERE id_hotel = pid_hotel;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_hotel_id_admin`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_hotel_id_admin` (IN pid_hotel INT,IN pid_admin INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE hotel
+    SET id_admin = pid_admin
+    WHERE id_hotel = pid_hotel;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `remove_hotel`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `remove_hotel` (IN pid INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	DELETE FROM hotel
+    WHERE id_hotel = pid;
+END$$
+
+DELIMITER ;
+
+

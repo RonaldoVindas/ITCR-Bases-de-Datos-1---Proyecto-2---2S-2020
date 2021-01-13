@@ -1,0 +1,33 @@
+CREATE TABLE `ho`.`status` (
+  `id_status` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(45) NULL,
+  `creation_date` DATE NULL,
+  `creation_user` VARCHAR(45) NULL,
+  `date_last_modification` DATE NULL,
+  `user_last_modification` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_status`))
+COMMENT = 'Repository to store different types of status ';
+DROP TRIGGER IF EXISTS `ho`.`status_BEFORE_INSERT`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `ho`.`status_BEFORE_INSERT` BEFORE INSERT ON `status` FOR EACH ROW
+BEGIN
+	IF NEW.creation_date IS NULL OR NEW.creation_user IS NULL THEN 
+		SET NEW.creation_date = CURDATE();
+        SET NEW.creation_user = SYSTEM_USER();
+	END IF;
+END$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `ho`.`status_BEFORE_UPDATE`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `ho`.`status_BEFORE_UPDATE` BEFORE UPDATE ON `status` FOR EACH ROW
+BEGIN
+	IF NEW.date_last_modification IS NULL OR NEW.user_last_modification IS NULL THEN
+		SET NEW.date_last_modification = CURDATE();
+        SET NEW.user_last_modification = SYSTEM_USER();
+	END IF;
+END$$
+DELIMITER ;

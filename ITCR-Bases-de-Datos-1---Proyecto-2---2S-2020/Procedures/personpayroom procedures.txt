@@ -1,0 +1,134 @@
+USE `ho`;
+DROP procedure IF EXISTS `insert_personpayroom`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `insert_personpayroom` (IN pid_person INT,IN pid_room INT,IN parrive_date DATE,IN pleave_date DATE)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	INSERT INTO personpayroom(id_person,id_room,arrive_date,leave_date)
+    VALUES(pid_person,pid_room,parrive_date,pleave_date);
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_ppr_id_person`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_ppr_id_person` (IN pid_person INT,IN pid_room INT,IN pnewid INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE personpayroom
+    SET  id_person = pnewid
+    WHERE id_person = pid_person AND id_room = pid_room;
+END$$
+
+DELIMITER ;
+
+/////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_ppr_id_room`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_ppr_id_room` (IN pid_person INT,IN pid_room INT,IN pnewid INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE personpayroom
+    SET  id_room = pnewid
+    WHERE id_person = pid_person AND id_room = pid_room;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_ppr_arrive_date`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_ppr_arrive_date` (IN pid_person INT,IN pid_room INT,IN parrive_date DATE)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE personpayroom
+    SET  arrive_date = parrive_date
+    WHERE id_person = pid_person AND id_room = pid_room;
+END$$
+
+DELIMITER ;
+
+/////////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_ppr_leave_date`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_ppr_leave_date` (IN pid_person INT,IN pid_room INT,IN pleave_date DATE)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE personpayroom
+    SET  leave_date = pleave_date
+    WHERE id_person = pid_person AND id_room = pid_room;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `remove_personpayroom`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `remove_personpayroom` (IN pid_person INT,IN pid_room INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+
+	DELETE FROM personpayroom
+    WHERE id_person = pid_person AND id_room = pid_room;
+END$$
+
+DELIMITER ;
+
+
+
+
+
+
+

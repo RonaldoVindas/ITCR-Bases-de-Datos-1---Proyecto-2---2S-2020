@@ -1,0 +1,64 @@
+USE `ho`;
+DROP procedure IF EXISTS `insert_user_type`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `insert_user_type` (IN pdescription VARCHAR(45))
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	INSERT INTO user_type(description)
+    VALUES(pdescription);
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_user_type_description`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_user_type_description` (IN pid INT,IN pdescription VARCHAR(45))
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE user_type
+    SET description = pdescription
+    WHERE id_user_type = pid;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `remove_user_type`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `remove_user_type` (IN pid INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	DELETE FROM user_type
+    WHERE id_user_type = pid;
+END$$
+
+DELIMITER ;
+
+
+
+

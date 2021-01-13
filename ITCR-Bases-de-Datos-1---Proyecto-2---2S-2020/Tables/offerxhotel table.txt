@@ -1,0 +1,43 @@
+CREATE TABLE `ho`.`offerxhotel` (
+  `id_offer` INT NOT NULL,
+  `id_hotel` INT NOT NULL,
+  `creation_date` DATE NULL,
+  `creation_user` VARCHAR(45) NULL,
+  `date_last_modification` DATE NULL,
+  `user_last_modification` VARCHAR(45) NULL,
+  INDEX `id_hotel_oxh_fk_idx` (`id_hotel` ASC) VISIBLE,
+  PRIMARY KEY (`id_offer`, `id_hotel`),
+  CONSTRAINT `id_offer_oxh_fk`
+    FOREIGN KEY (`id_offer`)
+    REFERENCES `ho`.`offer` (`id_offer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_hotel_oxh_fk`
+    FOREIGN KEY (`id_hotel`)
+    REFERENCES `ho`.`hotel` (`id_hotel`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+DROP TRIGGER IF EXISTS `ho`.`offerxhotel_BEFORE_INSERT`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `ho`.`offerxhotel_BEFORE_INSERT` BEFORE INSERT ON `offerxhotel` FOR EACH ROW
+BEGIN
+	IF NEW.creation_date IS NULL OR NEW.creation_user IS NULL THEN 
+		SET NEW.creation_date = CURDATE();
+        SET NEW.creation_user = SYSTEM_USER();
+	END IF;
+END$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `ho`.`offerxhotel_BEFORE_UPDATE`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `ho`.`offerxhotel_BEFORE_UPDATE` BEFORE UPDATE ON `offerxhotel` FOR EACH ROW
+BEGIN
+	IF NEW.date_last_modification IS NULL OR NEW.user_last_modification IS NULL THEN
+		SET NEW.date_last_modification = CURDATE();
+        SET NEW.user_last_modification = SYSTEM_USER();
+	END IF;
+END$$
+DELIMITER ;

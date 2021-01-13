@@ -1,0 +1,155 @@
+USE `ho`;
+DROP procedure IF EXISTS `insert_offer`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `insert_offer` (IN pname VARCHAR(45),IN p_expire_date DATE,IN pdiscount INT,IN pid_status INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	INSERT INTO offer(name,expire_date,discount,id_status)
+    VALUES(pname,p_expire_date,pdiscount,pid_status);
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////////////////////////
+
+
+USE `ho`;
+DROP procedure IF EXISTS `update_offer_name`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_offer_name` (IN pid INT,IN pname VARCHAR(45))
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE offer
+    SET name = pname
+    WHERE id_offer = pid;
+END$$
+
+DELIMITER ;
+
+//////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_offer_expire_date`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_offer_expire_date` (IN pid INT,IN pdate DATE)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE offer
+    SET expire_date = pdate
+    WHERE id_offer = pid;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP procedure IF EXISTS `update_offer_discount`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_offer_discount` (IN pid INT,IN pdiscount INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE offer
+    SET discount = pdiscount
+    WHERE id_offer = pid;
+END$$
+
+DELIMITER ;
+
+//////////////////////////////////////////////////////////////////////////
+
+
+USE `ho`;
+DROP procedure IF EXISTS `update_id_status`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `update_id_status` (IN pid_offer INT,IN pid_status INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	UPDATE offer
+    SET id_status = pid_status
+    WHERE id_offer = pid_offer;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////////////////////
+
+
+USE `ho`;
+DROP procedure IF EXISTS `remove_offer`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE PROCEDURE `remove_offer` (IN pid INT)
+BEGIN
+DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
+DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
+DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
+DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
+	DELETE FROM offer
+    WHERE id_offer = pid;
+END$$
+
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
