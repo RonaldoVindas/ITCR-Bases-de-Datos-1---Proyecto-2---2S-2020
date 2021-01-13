@@ -1,0 +1,5 @@
+insert into user_type(description) Values("System Admin");
+
+insert into user_type(description) Values("Hotel Admin");
+
+insert into user_type(description) Values("Client");

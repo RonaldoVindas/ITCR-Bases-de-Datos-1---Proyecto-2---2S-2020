@@ -1,0 +1,5 @@
+insert into category(description) values("1 Star");
+insert into category(description) values("2 Stars");
+insert into category(description) values("3 Stars");
+insert into category(description) values("4 Stars");
+insert into category(description) values("5 Stars");

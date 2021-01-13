@@ -1,0 +1,8 @@
+insert into district(name,id_canton) values("La Fortuna",1);
+insert into district(name,id_canton) values("Sierpe",2);
+insert into district(name,id_canton) values("Tamarindo",3);
+insert into district(name,id_canton) values("Quepos",4);
+insert into district(name,id_canton) values("Monte Verde",5);
+insert into district(name,id_canton) values("Colorado",6);
+insert into district(name,id_canton) values("Cobano",7);
+insert into district(name,id_canton) values("Cahuita",8);

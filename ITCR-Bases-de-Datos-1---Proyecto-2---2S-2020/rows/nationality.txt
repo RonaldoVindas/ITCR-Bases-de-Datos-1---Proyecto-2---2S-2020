@@ -1,0 +1,10 @@
+insert into nationality(description) values("American");
+insert into nationality(description) values("Costa Rican");
+insert into nationality(description) values("Canadian");
+insert into nationality(description) values("Mexican");
+insert into nationality(description) values("British");
+insert into nationality(description) values("German");
+insert into nationality(description) values("French");
+insert into nationality(description) values("Irish");
+insert into nationality(description) values("Chinese");
+insert into nationality(description) values("Australian");

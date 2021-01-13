@@ -1,0 +1,4 @@
+insert into operation_type (name) values("insert");
+insert into operation_type (name) values("update");
+
+insert into operation_type (name) values("delete");

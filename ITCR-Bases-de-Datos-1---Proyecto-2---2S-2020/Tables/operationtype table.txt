@@ -1,0 +1,25 @@
+CREATE TABLE `ho`.`operation_type` (
+  `idoperation_type` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `creation_date` DATE NULL,
+  `creation_user` VARCHAR(45) NULL,
+  `date_last_modification` DATE NULL,
+  `user_last_modification` VARCHAR(45) NULL,
+  PRIMARY KEY (`idoperation_type`),
+  INDEX `id_operationtype_idx` (`idoperation_type` ASC) INVISIBLE)
+COMMENT = 'name of operations posible on tables';
+DROP TRIGGER IF EXISTS `ho`.`operation_type_BEFORE_INSERT`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `ho`.`operation_type_BEFORE_INSERT` BEFORE INSERT ON `operation_type` FOR EACH ROW
+BEGIN
+	IF NEW.creation_date IS NULL OR NEW.creation_user IS NULL THEN 
+		SET NEW.creation_date = CURDATE();
+        SET NEW.creation_user = SYSTEM_USER();
+	END IF;
+END$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `ho`.`operation_type_BEFORE_UPDATE`;
+
+DELIMITER $$

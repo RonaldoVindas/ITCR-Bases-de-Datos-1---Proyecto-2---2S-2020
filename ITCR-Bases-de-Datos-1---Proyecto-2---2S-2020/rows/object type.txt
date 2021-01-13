@@ -1,0 +1,14 @@
+insert into object_type(name)  values("country");
+insert into object_type(name)  values("province");
+insert into object_type(name)  values("canton");
+insert into object_type(name)  values("district");
+insert into object_type(name)  values("gender");
+insert into object_type(name)  values("category");
+insert into object_type(name)  values("hotel type");
+insert into object_type(name)  values("nationality");
+insert into object_type(name)  values("operation type");
+insert into object_type(name)  values("room type");
+insert into object_type(name)  values("service");
+insert into object_type(name)  values("status");
+insert into object_type(name)  values("user type");
+insert into object_type(name)  values("object type");

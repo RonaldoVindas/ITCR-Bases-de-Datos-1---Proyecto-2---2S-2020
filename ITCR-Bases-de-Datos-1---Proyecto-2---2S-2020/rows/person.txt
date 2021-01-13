@@ -1,0 +1,61 @@
+insert into person(id_person,first_name, last_name, brithday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (117820091,"Jose", "Blanco", '2000-06-28',"jablanc@gmail.com","Guth",12345678,1,1,1 );
+
+
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+
+
+values (717124021,"Ramon", "Ramirez", '2001-01-21',"RamRam@gmail.com","Ram",12345678,1,2,1 );
+
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (1234567890,"Ramon", "Ramirez", '2001-01-21',"RamRam@gmail.com","Ram",12345678,1,2,1 );
+
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (098765432,"Lisa", "Stone", '1990-03-11',"Lisa@gmail.com","Liz",12345678,2,1,2 );
+
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (765424021,"Karoline", "Musk", '1990-03-11',"kirs@gmail.com","tusk",12345678,2,1,2 );
+
+
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (765476235,"Karl", "Max", '1995-03-11',"karlm@gmail.com","SUnion",12345678,1,10,2 );
+
+
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (761030021,"John", "Doe", '1960-03-01',"nameles@gmail.com","undead",12345678,1,1,2 );
+
+
+
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (761030022,"Jane", "Doe", '1960-03-01',"ghost@gmail.com","banshee",12345678,2,1,2 );
+
+
+
+
+
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (788030022,"Wagner", "Araya", '1998-01-30',"soul@gmail.com","soul",12345678,1,1,3 );
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (261030022,"Mauricio", "Alfaro", '1999-09-01',"Dixus@gmail.com","drix",12345678,1,2,3 );
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (361030022,"Miranda", "Venegas", '1999-04-15',"miruwu123t@gmail.com","miry",12345678,2,3,3 );
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (461030022,"Jose", "Madrigal", '2000-08-20',"boringt@gmail.com","twisted",12345678,2,4,3 );
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (561030022,"Pablo", "Fernandez", '1999-07-22',"VolibearSovietico@gmail.com","banshee",12345678,1,5,3 );
+insert into person(id_person,first_name, last_name, birthday, email, username, bank_Account_number, id_gender, id_nationality,id_user_type) 
+
+values (661030022,"Esteban", "Rojas", '2000-03-01',"Pelos@gmail.com","peanut butter",12345678,1,6,3 );

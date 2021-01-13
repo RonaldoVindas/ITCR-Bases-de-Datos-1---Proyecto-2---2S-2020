@@ -1,0 +1,8 @@
+insert into canton(name,id_province) values("San Carlos",2);
+insert into canton(name,id_province) values("Osa",6);
+insert into canton(name,id_province) values("Santa Cruz",7);
+insert into canton(name,id_province) values("Quepos",6);
+insert into canton(name,id_province) values("Puntarenas",6);
+insert into canton(name,id_province) values("Pococi",5);
+insert into canton(name,id_province) values("Cobano",7);
+insert into canton(name,id_province) values("Talamanca",5);
