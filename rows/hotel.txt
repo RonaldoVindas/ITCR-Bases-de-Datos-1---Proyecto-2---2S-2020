@@ -1,0 +1,7 @@
+insert into hotel(name, id_photo, id_Category, id_district, id_coordinates, id_admin, id_hotelType) values("Arenal Springs Resort & Spa",1,4,1,1,98765432,3);
+insert into hotel(name, id_photo, id_Category, id_district, id_coordinates, id_admin, id_hotelType) values("Vista Drake Lodge",2,2,2,2,761030021,2);
+
+insert into hotel(name, id_photo, id_Category, id_district, id_coordinates, id_admin, id_hotelType) values("Hotel Pasatiempo",3,5,3,3,761030022,5);
+insert into hotel(name, id_photo, id_Category, id_district, id_coordinates, id_admin, id_hotelType) values("El Faro Beach Hotel",4,6,4,4,765424021,1);
+
+insert into hotel(name, id_photo, id_Category, id_district, id_coordinates, id_admin, id_hotelType) values("Monteverde Lodge & Gardens",5,3,5,5,765476235,6);

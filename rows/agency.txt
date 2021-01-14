@@ -1,0 +1,5 @@
+insert into agency(name, password,id_photo) values("Wonderland","wonderpassword",6);
+
+insert into agency(name, password,id_photo) values("Magallanes","magallanespassword",7);
+
+insert into agency(name, password,id_photo) values("Viajes Colon","wonderpassword",8);

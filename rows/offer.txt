@@ -1,0 +1,3 @@
+insert into offer(name,discount,id_status,id_Oagency,expire_Date) values("Individual hoy",20,1,1,'2021-03-01');
+insert into offer(name,discount,id_status,id_Oagency,expire_Date) values("Affordable Suit",50,1,2,'2021-01-30');
+insert into offer(name,discount,id_status,id_Oagency,expire_Date) values("Romantic Escape",10,1,3,'2021-02-22');
