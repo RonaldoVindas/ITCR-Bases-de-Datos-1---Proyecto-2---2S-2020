@@ -1,0 +1,12 @@
+DROP procedure IF EXISTS Viewhotel;
+
+DELIMITER $$
+USE ho$$
+CREATE PROCEDURE Viewhotel ()
+begin
+Select a.id_hotel, a.name, a.id_category, a.id_hoteltype, a.id_admin, a.id_district, count(b.id_room)
+from hotel a 
+join room b
+on a.id_hotel = b.id_hotel
+group by a.id_hotel;
+END$$

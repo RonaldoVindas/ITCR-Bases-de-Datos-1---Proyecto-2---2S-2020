@@ -1,0 +1,16 @@
+DROP procedure IF EXISTS TopSellsDay;
+
+DELIMITER $$
+USE ho$$
+CREATE PROCEDURE TopSellsDay ( in n int)
+bEGIN
+    SELECT  dayofyear(c.creation_date), count(1)
+    from hotel a
+    inner join room b
+    on a.id_hotel = b.id_hotel
+    inner join personpayroom c
+    on b.id_room = c.id_room
+    group by dayofyear(c.creation_date) order by count(1) desc
+    Limit n;
+
+END$$

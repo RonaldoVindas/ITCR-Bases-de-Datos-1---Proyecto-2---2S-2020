@@ -1,0 +1,21 @@
+DROP procedure IF EXISTS findhotel;
+
+DELIMITER $$
+USE ho$$
+CREATE PROCEDURE findhotel (in pdate1 date, in pdate2 date, in price1 int, in price2 int, in pcategory varchar(45))
+begin
+Select hotel.name, category.description, room.price, room_type.name, room.id_room
+from hotel 
+inner join room
+on hotel.id_hotel = room.id_hotel
+join room_type 
+on room.id_room_type = room_type.id_room_type
+join category 
+on  hotel.id_category = category.id_category
+join personpayroom 
+on room.id_room = personpayroom.id_room
+where category.description = ifnull(pcategory,category.description) and room.price >= price1 and room.price <= price2 and personpayroom.arrive_date not between pdate1 and pdate2 and personpayroom.leave_date not between pdate1 and pdate2
+;
+
+
+END$$

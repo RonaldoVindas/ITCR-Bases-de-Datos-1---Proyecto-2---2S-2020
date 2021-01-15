@@ -1,0 +1,17 @@
+DROP procedure IF EXISTS HotelReport;
+
+DELIMITER $$
+USE ho$$
+CREATE PROCEDURE HotelReport (in pid int, in pdate1 date, in pdate2 date)
+bEGIN
+    SELECT  distinct a.id_hotel, a.name, count(c.id_room)
+    from hotel a
+    inner join room b
+    on a.id_hotel = b.id_hotel
+    inner join personpayroom c
+    on b.id_room = c.id_room
+    where c.creation_date between pdate1 and pdate2 and a.id_hotel = pid
+    group by a.id_hotel;
+ 
+
+END$$

@@ -1,0 +1,21 @@
+	DROP procedure IF EXISTS Hotelservices;
+
+DELIMITER $$
+USE ho$$
+CREATE PROCEDURE Hotelservices (IN pService1 varchar(45) , IN pService2 varchar(45) ,IN pService3 varchar(45) ,IN pService4 varchar(45) ,IN pService5 varchar(45) ,IN pService6 varchar(45) ,IN pService7 varchar(45) ,IN pService8 varchar(45) ,IN pService9 varchar(45) ,IN pService10 varchar(45) ,IN pService11 varchar(45) ,IN pService12 varchar(45) ,IN pService13 varchar(45) )
+BEGIN
+    SELECT  distinct a.id_hotel, a.name, b.description, c.name
+    from hotel a
+    inner join category b
+    ON a.id_category = b.id_category
+    inner join hotel_type c
+    On a.id_hoteltype = c.idhotel_type
+    inner join servicexhotel e 
+    On a.id_hotel = e.id_hotel
+    inner join service d
+    On e.id_service = d.id_service
+    where d.name =pService1 or d.name = pService2 or d.name=pService3 or d.name = pService4 
+    or d.name = pService5 or d.name =pService6  or d.name = pService7 or d.name = pService8
+    or d.name = pService9 or  d.name = pService10 or d.name = pService11 or d.name = pService12 or d.name = pService13;
+
+END$$

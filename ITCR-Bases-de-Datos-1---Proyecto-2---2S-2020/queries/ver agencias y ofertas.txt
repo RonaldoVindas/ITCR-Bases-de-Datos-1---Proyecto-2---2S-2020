@@ -1,0 +1,16 @@
+DROP procedure IF EXISTS ViewAgency;
+
+DELIMITER $$
+USE ho$$
+CREATE PROCEDURE ViewAgency ()
+begin
+Select a.id_agency, a.name, b.id_offer, b.name, b.discount, b.expire_Date, c.id_hotel, d.id_room_type
+from agency a 
+left outer join offer b
+on a.id_agency = b.id_Oagency
+join offerxhotel c 
+on b.id_offer = c.id_offer
+join offerxroom_type d
+on c.id_offer = d.id_offer;
+
+END$$

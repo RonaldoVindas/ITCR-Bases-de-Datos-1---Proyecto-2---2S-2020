@@ -1,0 +1,33 @@
+DROP procedure IF EXISTS genderAndage;
+
+DELIMITER $$
+USE ho$$
+CREATE PROCEDURE genderAndage (in pid int )
+begin
+Select gender ,c,
+    CASE
+    when age<30 then '20-29'
+    when age<40 then '30-39'
+    when age <50 then '40-49'
+    when age<60 then '50-59'
+    when age <70 then '60-69'
+    when age <80 then '70-79'
+    else '80+'
+    end
+    as 'ageFilter'
+from(
+select Distinct truncate((TIMESTAMPDIFF(MONTH,a.birthday, sysdate()))/12,0) as age, e.description as gender, count(1) as c
+from person a
+join personpayroom b
+on a.id_person=b.id_person
+join room c
+on b.id_room = c.id_room
+join hotel d
+on c.id_hotel = d.id_hotel
+join gender e
+on a.id_gender = e.id_gender
+where d.id_hotel = pid
+)  as T1
+group by gender, 'ageFilter';
+
+END$$

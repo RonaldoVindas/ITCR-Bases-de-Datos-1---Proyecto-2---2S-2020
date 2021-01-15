@@ -1,0 +1,21 @@
+DROP procedure IF EXISTS userInput;
+
+DELIMITER $$
+USE ho$$
+CREATE PROCEDURE userInput (IN pName varchar(45) , in plastname varchar(45),in plikes int)
+BEGIN
+    SELECT a.id_person, a.first_name, a.last_name, a.username,d.description, e.description, a.birthday, count(b.id_person), sum(c.likes_quantity) as likes, a.id_user_type
+    FROM person a
+    INNER JOIN personpayroom b
+    ON a.id_person = b.id_person
+    LEFT OUTer join personreviewshotel c
+    ON a.id_person = c.id_person
+    inner join nationality d
+    On a.id_nationality = d.id_nationality
+    inner join gender e
+    On a.id_gender = e.id_gender
+    GROUP BY a.id_person
+    Having a.id_user_type =3 and a.first_name= ifNull(pName, a.first_name) and a.last_name= ifNull(plastname, a.last_name) and sum(c.likes_quantity)>= plikes ;
+
+
+END$$

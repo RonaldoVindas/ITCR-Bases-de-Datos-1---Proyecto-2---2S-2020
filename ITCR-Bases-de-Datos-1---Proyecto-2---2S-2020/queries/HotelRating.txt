@@ -1,0 +1,18 @@
+DROP procedure IF EXISTS Hotelrating;
+
+DELIMITER $$
+USE ho$$
+CREATE PROCEDURE Hotelrating ()
+begin
+Select hotel.name, category.description, truncate(AVG(personreviewshotel.calification),1), min(room.price), max(room.price)
+from hotel 
+inner join category 
+On hotel.id_category = category.id_category
+left outer join personreviewshotel 
+On hotel.id_hotel = personreviewshotel.id_hotel 
+inner join room 
+on hotel.id_hotel = room.id_hotel
+group by hotel.id_hotel;
+
+
+END$$
