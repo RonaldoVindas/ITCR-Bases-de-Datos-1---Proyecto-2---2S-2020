@@ -1,0 +1,34 @@
+USE `ho`;
+DROP function IF EXISTS `get_nationality_id`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_nationality_id` (pdescription VARCHAR(45))
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_nationality FROM nationality WHERE description = pdescription);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+/////////////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_nationality_description`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_nationality_description` (pid INT)
+RETURNS VARCHAR(45)
+DETERMINISTIC
+BEGIN
+DECLARE vcName VARCHAR(45);
+SET vcName = (SELECT description FROM nationality WHERE id_nationality = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+

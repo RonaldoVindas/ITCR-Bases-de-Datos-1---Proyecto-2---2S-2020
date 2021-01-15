@@ -1,0 +1,55 @@
+USE `ho`;
+DROP function IF EXISTS `get_canton_name`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_canton_name` (pid INT)
+RETURNS VARCHAR(45)
+DETERMINISTIC
+BEGIN
+DECLARE vcName VARCHAR(45);
+SET vcName = (SELECT name From canton WHERE id_canton = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+//////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_canton_id_province`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_canton_id_province` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+
+	DECLARE vcId INT;
+    SET vcId = (SELECT id_province FROM canton WHERE id_canton = pid);
+	RETURN vcId;
+END$$
+
+DELIMITER ;
+
+
+
+///////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_canton_id`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_canton_id` (pname VARCHAR(45))
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+	DECLARE vcId INT;
+    SET vcId = (SELECT id_canton FROM canton WHERE name = pname);
+	RETURN vcId;
+END$$
+
+DELIMITER ;
+

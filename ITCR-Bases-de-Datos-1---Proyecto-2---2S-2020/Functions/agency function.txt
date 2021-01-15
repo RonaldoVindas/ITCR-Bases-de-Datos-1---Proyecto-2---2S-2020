@@ -1,0 +1,78 @@
+USE `ho`;
+DROP function IF EXISTS `get_agency_id`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_agency_id` (pname VARCHAR(45))
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_agency FROM agency WHERE name = pname);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////
+
+
+USE `ho`;
+DROP function IF EXISTS `get_agency_name`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_agency_name` (pid INT)
+RETURNS VARCHAR(45)
+DETERMINISTIC
+BEGIN
+DECLARE vcName VARCHAR(45);
+SET vcName = (SELECT name FROM agency WHERE id_agency = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_agency_password`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_agency_password` (pid INT)
+RETURNS VARCHAR(45)
+DETERMINISTIC
+BEGIN
+DECLARE vcName VARCHAR(45);
+SET vcName = (SELECT password FROM agency WHERE id_agency = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+/////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_agency_id_photo`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_agency_id_photo` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_photo FROM agency WHERE id_agency = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+
+
+
+
+
+
+

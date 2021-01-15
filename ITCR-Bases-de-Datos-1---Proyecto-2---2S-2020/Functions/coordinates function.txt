@@ -1,0 +1,52 @@
+USE `ho`;
+DROP function IF EXISTS `get_coordinates_id`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_coordinates_id` (platitude INT,plongitude INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_coordinates FROM coordinates WHERE latitude = platitude AND longitude = plongitude);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+//////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_coordinates_latitude`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_coordinates_latitude` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT latitude FROM coordinates WHERE id_coordinates = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+/////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_coordinates_longitude`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_coordinates_longitude` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT longitude FROM coordinates WHERE id_coordinates = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+

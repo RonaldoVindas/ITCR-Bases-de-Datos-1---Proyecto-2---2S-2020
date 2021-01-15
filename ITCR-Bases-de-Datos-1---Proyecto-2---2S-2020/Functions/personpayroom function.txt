@@ -1,0 +1,70 @@
+USE `ho`;
+DROP function IF EXISTS `get_ppr_id_person`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_ppr_id_person` (pid_room INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_person FROM personpayroom WHERE id_room = pid_room);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_ppr_id_room`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_ppr_id_room` (pid_person INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_room FROM personpayroom WHERE id_person = pid_person);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_ppr_arrive_date`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_ppr_arrive_date` (pid_person INT,pid_room INT)
+RETURNS DATE
+DETERMINISTIC
+BEGIN
+DECLARE vcName DATE;
+SET vcName = (SELECT arrive_date FROM personpayroom WHERE id_person = pid_person AND id_room = pid_room);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_ppr_leave_date`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_ppr_leave_date` (pid_person INT,pid_room INT)
+RETURNS DATE
+DETERMINISTIC
+BEGIN
+DECLARE vcName DATE;
+SET vcName = (SELECT leave_date FROM personpayroom WHERE id_person = pid_person AND id_room = pid_room);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+

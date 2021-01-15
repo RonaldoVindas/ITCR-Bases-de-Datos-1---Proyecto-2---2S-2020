@@ -1,0 +1,160 @@
+USE `ho`;
+DROP function IF EXISTS `get_hotel_id`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_hotel_id` (pname VARCHAR(45))
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_hotel FROM hotel WHERE name = pname);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_hotel_name`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_hotel_name` (pid INT)
+RETURNS VARCHAR(45)
+DETERMINISTIC
+BEGIN
+DECLARE vcName VARCHAR(45);
+SET vcName = (SELECT name FROM hotel WHERE id_hotel = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_hotel_stars`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_hotel_stars` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT stars FROM hotel WHERE id_hotel = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_hotel_id_photo`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_hotel_id_photo` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_photo FROM hotel WHERE id_hotel = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+/////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_hotel_id_category`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_hotel_id_category` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_category FROM hotel WHERE id_hotel = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_hotel_id_district`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_hotel_id_district` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_district FROM hotel WHERE id_hotel = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_hotel_id_coordinates`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_hotel_id_coordinates` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_coordinates FROM hotel WHERE id_hotel = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_hotel_id_admin`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_hotel_id_admin` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_admin FROM hotel WHERE id_hotel = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

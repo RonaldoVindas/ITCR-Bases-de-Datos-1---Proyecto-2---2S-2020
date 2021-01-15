@@ -1,0 +1,34 @@
+USE `ho`;
+DROP function IF EXISTS `get_axo_id_agency`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_axo_id_agency` (pid_offer INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_agency FROM agencyxoffer WHERE id_offer = pid_offer);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_axo_id_offer`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_axo_id_offer` (pid_agency INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_offer FROM agencyxoffer WHERE id_agency = pid_agency);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+

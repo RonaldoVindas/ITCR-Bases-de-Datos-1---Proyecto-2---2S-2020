@@ -1,0 +1,34 @@
+USE `ho`;
+DROP function IF EXISTS `get_service_id`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_service_id` (pname VARCHAR(45))
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_service FROM service WHERE name = pname);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_service_name`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_service_name` (pid INT)
+RETURNS VARCHAR(45)
+DETERMINISTIC
+BEGIN
+DECLARE vcName VARCHAR(45);
+SET vcName = (SELECT name FROM service WHERE id_service = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+

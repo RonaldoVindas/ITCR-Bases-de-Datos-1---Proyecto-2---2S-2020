@@ -1,0 +1,90 @@
+USE `ho`;
+DROP function IF EXISTS `get_prh_id_person`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_prh_id_person` (pid_hotel INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_person FROM personreviewshotel WHERE id_hotel = pid_hotel);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+//////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_prh_id_hotel`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_prh_id_hotel` (pid_person INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_hotel FROM personreviewshotel WHERE id_person = pid_person);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+//////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_prh_message`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_prh_message` (pid_person INT,pid_hotel INT)
+RETURNS VARCHAR(100)
+DETERMINISTIC
+BEGIN
+DECLARE vcName VARCHAR(100);
+SET vcName = (SELECT message FROM personreviewshotel WHERE id_person = pid_person AND id_hotel = pid_hotel);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_prh_calification`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_prh_calification` (pid_person INT,pid_hotel INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT calification FROM personreviewshotel WHERE id_person = pid_person AND id_hotel = pid_hotel);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_prh_likes_quantity`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_prh_likes_quantity` (pid_person INT,pid_hotel INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT likes_quantity FROM personreviewshotel WHERE id_person = pid_person AND id_hotel = pid_hotel);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+
+

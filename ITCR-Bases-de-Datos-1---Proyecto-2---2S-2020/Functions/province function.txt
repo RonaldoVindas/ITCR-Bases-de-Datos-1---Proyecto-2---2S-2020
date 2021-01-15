@@ -1,0 +1,52 @@
+USE `ho`;
+DROP function IF EXISTS `get_province_id`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_province_id` (pname VARCHAR(45))
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcId INT;
+SET vcId = (SELECT id_province FROM province WHERE name = pname);
+RETURN vcId;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_province_name`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_province_name` (pid INT)
+RETURNS VARCHAR(45)
+DETERMINISTIC
+BEGIN
+DECLARE vcName VARCHAR(45);
+SET vcName = (SELECT name FROM province WHERE id_province = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_province_id_country`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_province_id_country` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcId INT;
+SET vcId = (SELECT id_country FROM province WHERE id_province = pid);
+RETURN vcId;
+END$$
+
+DELIMITER ;
+

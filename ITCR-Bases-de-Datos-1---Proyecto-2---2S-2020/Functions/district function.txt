@@ -1,0 +1,51 @@
+USE `ho`;
+DROP function IF EXISTS `get_district_id`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_district_id` (pname VARCHAR(45))
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_district FROM district WHERE name = pname);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+//////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_district_name`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_district_name` (pid INT)
+RETURNS VARCHAR(45)
+DETERMINISTIC
+BEGIN
+DECLARE vcName VARCHAR(45);
+SET vcName = (SELECT name FROM district WHERE id_district = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_district_id_canton`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_district_id_canton` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_canton FROM district WHERE id_district = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;

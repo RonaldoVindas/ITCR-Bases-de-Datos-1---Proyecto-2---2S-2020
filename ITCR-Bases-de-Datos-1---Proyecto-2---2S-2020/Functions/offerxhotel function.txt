@@ -1,0 +1,35 @@
+USE `ho`;
+DROP function IF EXISTS `get_oxh_id_offer`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_oxh_id_offer` (pid_hotel INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_offer FROM offerxhotel WHERE id_hotel = pid_hotel);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+//////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_oxh_id_hotel`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_oxh_id_hotel` (pid_offer INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_hotel FROM offerxhotel WHERE id_offer = pid_offer);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+

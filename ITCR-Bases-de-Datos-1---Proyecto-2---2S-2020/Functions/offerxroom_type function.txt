@@ -1,0 +1,34 @@
+USE `ho`;
+DROP function IF EXISTS `get_oxrt_id_offer`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_oxrt_id_offer` (pid_room_type INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_offer FROM offerxroom_type WHERE id_room_type = pid_room_type);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_oxrt_id_room_type`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_oxrt_id_room_type` (pid_offer INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_room_type FROM offerxroom_type WHERE id_offer = pid_offer);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+

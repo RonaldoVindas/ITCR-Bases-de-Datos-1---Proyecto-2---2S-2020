@@ -1,0 +1,35 @@
+USE `ho`;
+DROP function IF EXISTS `get_sxh_id_service`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_sxh_id_service` (pid_hotel INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_service FROM servicexhotel WHERE id_hotel = pid_hotel);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+//////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_sxh_id_hotel`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_sxh_id_hotel` (pid_service INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_hotel FROM servicexhotel WHERE id_service = pid_service);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+

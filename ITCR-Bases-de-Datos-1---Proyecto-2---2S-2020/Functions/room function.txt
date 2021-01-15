@@ -1,0 +1,105 @@
+USE `ho`;
+DROP function IF EXISTS `get_room_id`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_room_id` (pprice INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_room FROM room WHERE price = pprice);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_room_price`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_room_price` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT price FROM room WHERE id_room = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+//////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_room_bed_quantity`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_room_bed_quantity` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT bed_quantity FROM room WHERE id_room = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_room_id_room_type`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_room_id_room_type` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_room_type FROM room WHERE id_room = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+////////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_room_id_status`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_room_id_status` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_status_room FROM room WHERE id_room = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
+
+///////////////////////////////////////////////////////////
+
+USE `ho`;
+DROP function IF EXISTS `get_room_id_hotel`;
+
+DELIMITER $$
+USE `ho`$$
+CREATE FUNCTION `get_room_id_hotel` (pid INT)
+RETURNS INTEGER
+DETERMINISTIC
+BEGIN
+DECLARE vcName INT;
+SET vcName = (SELECT id_hotel FROM room WHERE id_room = pid);
+RETURN vcName;
+END$$
+
+DELIMITER ;
