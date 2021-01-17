@@ -8,6 +8,12 @@ CREATE TABLE `ho`.`coordinates` (
   `user_last_modification` VARCHAR(45) NULL,
   PRIMARY KEY (`id_coordinates`))
 COMMENT = 'Repository to store geographical coordinates for the hotels';
+
+ALTER TABLE `ho`.`coordinates` 
+CHANGE COLUMN `latitude` `latitude` DOUBLE NULL DEFAULT NULL ,
+CHANGE COLUMN `longitude` `longitude` DOUBLE NULL DEFAULT NULL ;
+
+
 DROP TRIGGER IF EXISTS `ho`.`coordinates_BEFORE_INSERT`;
 
 DELIMITER $$

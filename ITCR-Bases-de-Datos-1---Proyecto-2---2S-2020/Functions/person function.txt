@@ -71,16 +71,16 @@ DELIMITER ;
 //////////////////////////////////////////////////////
 
 USE `ho`;
-DROP function IF EXISTS `get_person_community`;
+DROP function IF EXISTS `get_person_password`;
 
 DELIMITER $$
 USE `ho`$$
-CREATE FUNCTION `get_person_community` (pid INT)
-RETURNS VARCHAR(100)
+CREATE FUNCTION `get_person_password` (pid INT)
+RETURNS VARCHAR(45)
 DETERMINISTIC
 BEGIN
-DECLARE vcName VARCHAR(100);
-SET vcName = (SELECT community FROM person WHERE id_person = pid);
+DECLARE vcName VARCHAR(45);
+SET vcName = (SELECT password FROM person WHERE id_person = pid);
 RETURN vcName;
 END$$
 

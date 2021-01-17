@@ -3,7 +3,7 @@ DROP function IF EXISTS `get_coordinates_id`;
 
 DELIMITER $$
 USE `ho`$$
-CREATE FUNCTION `get_coordinates_id` (platitude INT,plongitude INT)
+CREATE FUNCTION `get_coordinates_id` (platitude DOUBLE,plongitude DOUBLE)
 RETURNS INTEGER
 DETERMINISTIC
 BEGIN
@@ -22,10 +22,10 @@ DROP function IF EXISTS `get_coordinates_latitude`;
 DELIMITER $$
 USE `ho`$$
 CREATE FUNCTION `get_coordinates_latitude` (pid INT)
-RETURNS INTEGER
+RETURNS DOUBLE
 DETERMINISTIC
 BEGIN
-DECLARE vcName INT;
+DECLARE vcName DOUBLE;
 SET vcName = (SELECT latitude FROM coordinates WHERE id_coordinates = pid);
 RETURN vcName;
 END$$
@@ -40,10 +40,10 @@ DROP function IF EXISTS `get_coordinates_longitude`;
 DELIMITER $$
 USE `ho`$$
 CREATE FUNCTION `get_coordinates_longitude` (pid INT)
-RETURNS INTEGER
+RETURNS DOUBLE
 DETERMINISTIC
 BEGIN
-DECLARE vcName INT;
+DECLARE vcName DOUBLE;
 SET vcName = (SELECT longitude FROM coordinates WHERE id_coordinates = pid);
 RETURN vcName;
 END$$

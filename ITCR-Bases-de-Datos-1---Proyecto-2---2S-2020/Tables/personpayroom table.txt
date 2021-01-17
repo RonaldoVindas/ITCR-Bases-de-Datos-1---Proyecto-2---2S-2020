@@ -19,6 +19,13 @@ CREATE TABLE `ho`.`personpayroom` (
     REFERENCES `ho`.`room` (`id_room`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+ALTER TABLE `ho`.`personpayroom` 
+CHANGE COLUMN `arrive_date` `arrive_date` DATE NOT NULL ,
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`id_person`, `id_room`, `arrive_date`);
+;
+
 DROP TRIGGER IF EXISTS `ho`.`personpayroom_BEFORE_INSERT`;
 
 DELIMITER $$

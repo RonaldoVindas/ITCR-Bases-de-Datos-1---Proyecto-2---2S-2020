@@ -88,11 +88,11 @@ DELIMITER ;
 
 
 USE `ho`;
-DROP procedure IF EXISTS `update_id_status`;
+DROP procedure IF EXISTS `update_offer_id_status`;
 
 DELIMITER $$
 USE `ho`$$
-CREATE PROCEDURE `update_id_status` (IN pid_offer INT,IN pid_status INT)
+CREATE PROCEDURE `update_offer_id_status` (IN pid_offer INT,IN pid_status INT)
 BEGIN
 DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
 DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;

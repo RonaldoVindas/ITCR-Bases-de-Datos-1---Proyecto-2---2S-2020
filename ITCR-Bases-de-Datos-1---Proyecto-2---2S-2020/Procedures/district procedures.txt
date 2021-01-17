@@ -3,7 +3,7 @@ DROP procedure IF EXISTS `insert_district`;
 
 DELIMITER $$
 USE `ho`$$
-CREATE PROCEDURE `insert_district` (IN pname INT,IN pid_canton INT)
+CREATE PROCEDURE `insert_district` (IN pname VARCHAR(45),IN pid_canton INT)
 BEGIN
 DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
 DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;

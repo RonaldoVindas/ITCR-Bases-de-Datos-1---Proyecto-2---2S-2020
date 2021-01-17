@@ -1,5 +1,5 @@
 CREATE TABLE `ho`.`person` (
-  `id_person` INT NOT NULL AUTO_INCREMENT,
+  `id_person` INT NOT NULL,
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `birthday` DATE NULL,
@@ -34,6 +34,12 @@ CREATE TABLE `ho`.`person` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 COMMENT = 'Repository to store people';
+
+ALTER TABLE `ho`.`person` 
+CHANGE COLUMN `community` `password` VARCHAR(45) NULL DEFAULT NULL ;
+
+
+
 DROP TRIGGER IF EXISTS `ho`.`person_BEFORE_INSERT`;
 
 DELIMITER $$

@@ -25,7 +25,7 @@ DROP procedure IF EXISTS `update_oxh_id_hotel`;
 
 DELIMITER $$
 USE `ho`$$
-CREATE PROCEDURE `update_oxh_id_hotel` (IN pid_offer INT,IN pid_hotel INT)
+CREATE PROCEDURE `update_oxh_id_hotel` (IN pid_offer INT,IN pid_hotel INT,IN pnewid INT)
 BEGIN
 DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
 DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
@@ -34,8 +34,8 @@ DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
 DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
 DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
 	UPDATE offerxhotel
-    SET  id_hotel = pid_hotel
-    WHERE id_offer = pid_offer;
+    SET  id_hotel = pnewid
+    WHERE id_offer = pid_offer AND id_hotel = pid_hotel;
 END$$
 
 DELIMITER ;
@@ -47,7 +47,7 @@ DROP procedure IF EXISTS `update_oxh_id_offer`;
 
 DELIMITER $$
 USE `ho`$$
-CREATE PROCEDURE `update_oxh_id_offer` (IN pid_hotel INT,IN pid_offer INT)
+CREATE PROCEDURE `update_oxh_id_offer` (IN pid_hotel INT,IN pid_offer INT,IN pnewid INT)
 BEGIN
 DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
 DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
@@ -56,8 +56,8 @@ DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
 DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
 DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
 	UPDATE offerxhotel
-    SET  id_offer = pid_offer
-    WHERE id_hotel = pid_hotel;
+    SET  id_offer = pnewid
+    WHERE id_hotel = pid_hotel AND id_offer = pid_offer;
 END$$
 
 DELIMITER ;

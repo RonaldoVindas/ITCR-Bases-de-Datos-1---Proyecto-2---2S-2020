@@ -1,9 +1,9 @@
 USE `ho`;
-DROP procedure IF EXISTS `insert_description`;
+DROP procedure IF EXISTS `insert_status`;
 
 DELIMITER $$
 USE `ho`$$
-CREATE PROCEDURE `insert_description` (IN pdescription VARCHAR(45))
+CREATE PROCEDURE `insert_status` (IN pdescription VARCHAR(45))
 BEGIN
 DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
 DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;

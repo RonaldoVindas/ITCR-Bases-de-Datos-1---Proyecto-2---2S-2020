@@ -3,7 +3,7 @@ DROP procedure IF EXISTS `insert_coordinates`;
 
 DELIMITER $$
 USE `ho`$$
-CREATE PROCEDURE `insert_coordinates` (IN platitude INT, IN plongitude INT)
+CREATE PROCEDURE `insert_coordinates` (IN platitude DOUBLE, IN plongitude DOUBLE)
 BEGIN
 DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
 DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
@@ -25,7 +25,7 @@ DROP procedure IF EXISTS `update_coordinates_latitude`;
 
 DELIMITER $$
 USE `ho`$$
-CREATE PROCEDURE `update_coordinates_latitude` (IN pid INT,IN platitude INT)
+CREATE PROCEDURE `update_coordinates_latitude` (IN pid INT,IN platitude DOUBLE)
 BEGIN
 DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
 DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
@@ -47,7 +47,7 @@ DROP procedure IF EXISTS `update_coordinates_longitude`;
 
 DELIMITER $$
 USE `ho`$$
-CREATE PROCEDURE `update_coordinates_longitude` (IN pid INT,IN plongitude INT)
+CREATE PROCEDURE `update_coordinates_longitude` (IN pid INT,IN plongitude DOUBLE)
 BEGIN
 DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
 DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;

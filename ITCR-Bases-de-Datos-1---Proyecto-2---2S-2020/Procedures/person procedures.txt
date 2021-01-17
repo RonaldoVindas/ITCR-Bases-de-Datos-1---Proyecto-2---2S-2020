@@ -3,7 +3,9 @@ DROP procedure IF EXISTS `insert_person`;
 
 DELIMITER $$
 USE `ho`$$
-CREATE PROCEDURE `insert_person` (IN pfirst_name VARCHAR(45),IN plast_name VARCHAR(45),IN pbirthday DATE,IN pcommunity VARCHAR(100),IN pemail VARCHAR(45),IN pusername VARCHAR(45),IN pbank_account INT,IN pid_gender INT,IN pid_nationality INT,IN pid_user_type INT)
+CREATE PROCEDURE `insert_person`(IN pid_person INT,IN pfirst_name VARCHAR(45),IN plast_name VARCHAR(45),
+IN pbirthday DATE,IN ppassword VARCHAR(100),IN pemail VARCHAR(45),IN pusername VARCHAR(45),IN pbank_account INT,
+IN pid_gender INT,IN pid_nationality INT,IN pid_user_type INT)
 BEGIN
 DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
 DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
@@ -11,11 +13,14 @@ DECLARE EXIT HANDLER FOR 1172 SELECT 'Result consisted of more than one row.' Me
 DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
 DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
 DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
-	INSERT INTO person(first_name,last_name,birthday,community,email,username,bank_account,id_gender,id_nationality,id_user_type)
-    VALUES(pfirst_name,plast_name,pbirthday,pcommunity,pemail,pusername,pbank_account,pid_gender,pid_nationality,pid_user_type);
+	INSERT INTO person(id_person,first_name,last_name,birthday,password,email,username,bank_account,id_gender,id_nationality,id_user_type)
+    VALUES(pid_person,pfirst_name,plast_name,pbirthday,ppassword,pemail,pusername,pbank_account,pid_gender,pid_nationality,pid_user_type);
 END$$
 
 DELIMITER ;
+
+
+
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -88,11 +93,11 @@ DELIMITER ;
 /////////////////////////////////////////////////////////////////////////
 
 USE `ho`;
-DROP procedure IF EXISTS `update_person_community`;
+DROP procedure IF EXISTS `update_person_password`;
 
 DELIMITER $$
 USE `ho`$$
-CREATE PROCEDURE `update_person_community` (IN pid INT,IN pcommunity VARCHAR(100))
+CREATE PROCEDURE `update_person_password` (IN pid INT,IN ppassword VARCHAR(45))
 BEGIN
 DECLARE EXIT HANDLER FOR 1062 SELECT 'Duplicate keys error encountered.' Message;
 DECLARE EXIT HANDLER FOR 1105 SELECT 'Unknown error encountered.' Message;
@@ -101,7 +106,7 @@ DECLARE EXIT HANDLER FOR 1176 SELECT 'Key does not exist.' Message;
 DECLARE EXIT HANDLER FOR 1231 SELECT 'Variable cannot be set to that value.' Message;
 DECLARE EXIT HANDLER FOR 1232 SELECT 'Incorrect argument type to variable.' Message;
 	UPDATE person
-    SET community = pcommunity
+    SET password = ppassword
     WHERE id_person = pid;
 END$$
 
