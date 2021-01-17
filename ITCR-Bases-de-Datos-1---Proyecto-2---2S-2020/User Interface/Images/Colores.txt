@@ -1,0 +1,7 @@
+-Morado Claro: 		#515BD4  	81,91,212
+-Morado Oscuro: 	#8134AF 	129,52,175
+-Morado más Oscuro:     #39174D		57,23,77
+-Rosa: 			#DD2a7B		221,42,123
+-Amarillo:		#FEDA77		254,218,119
+-Naranja:		#F58529		245,133,41
+-Rojo: 			#FD1D1D		236,72,76
